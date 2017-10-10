@@ -29,6 +29,6 @@ class Membership(models.Model):
     is_active = models.BooleanField()
 
     def __str__(self):
-        return f'{self.group.name}' \
+        return f'{self.group.name}의 ' \
                f'{self.idol.name}' \
                f'({self.is_active})'
