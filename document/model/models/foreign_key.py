@@ -20,5 +20,10 @@ class User(models.Model):
     name = models.CharField(max_length=30)
     teacher = models.ForeignKey('self', on_delete=models.SET_NULL, null=True)
 
+    def save(self, *args, **kwargs):
+        if self.teacher and self.teacher == self:
+            self.teacher = None
+        super(User, self).save(*args, **kwargs)
+
     def __str__(self):
         return self.name
